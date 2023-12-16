@@ -1,7 +1,7 @@
 ﻿  main.cpp
-C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\main.cpp(10,13): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\main.cpp(12,9): warning C4473: 'printf' : not enough arguments passed for format string
-C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\main.cpp(12,9): message : placeholders and their parameters expect 4 variadic arguments, but 3 were provided
-C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\main.cpp(12,9): message : the missing variadic argument 4 is required by format string '%0*d'
-C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\main.cpp(12,9): message : this argument is used by a conversion specifier
+C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\data_types_format_printf.h(8,13): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\data_types_format_printf.h(12,9): warning C4473: 'printf' : not enough arguments passed for format string
+C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\data_types_format_printf.h(12,9): message : placeholders and their parameters expect 4 variadic arguments, but 3 were provided
+C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\data_types_format_printf.h(12,9): message : the missing variadic argument 4 is required by format string '%0*d'
+C:\Users\Ghani\Desktop\C_PlusPlus\C_plusPlus\data_types_format_printf.h(12,9): message : this argument is used by a conversion specifier
   C_plusPlus.vcxproj -> C:\Users\Ghani\Desktop\C_PlusPlus\x64\Debug\C_plusPlus.exe

@@ -31,4 +31,9 @@
       <Filter>Header Files\concepts</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_types_format_printf.h">
+      <Filter>Header Files\concepts</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

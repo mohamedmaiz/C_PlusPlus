@@ -131,6 +131,9 @@
     <ClCompile Include="overloading_functions.h" />
     <ClCompile Include="my_recursion.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_types_format_printf.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

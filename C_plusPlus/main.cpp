@@ -1,13 +1,13 @@
 
 #include <iostream>
-#include "my_recursion.h"
+#include "data_types_format_printf.h"
 using namespace  std;
-using namespace MyRecursionLib;
+using namespace DataTypesFormat;
 
 
 int main()
 {
-	DicrementNumber(1, 10);
+	Test();
 	return 0;
 }
 
