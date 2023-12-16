@@ -3,12 +3,13 @@
 #include "vectors.h"
 
 using namespace  std;
-using namespace MyVectors;
+using namespace FirstTask;
 
 
 int main()
 {
-	getMyVectors();
+	GetVectorValues();
+	ReadVectorValues();
 	return 0;
 }
 
