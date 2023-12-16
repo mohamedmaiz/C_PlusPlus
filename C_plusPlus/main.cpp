@@ -1,13 +1,14 @@
 
 #include <iostream>
-#include "two_dimensional_arrays.h"
+#include "vectors.h"
+
 using namespace  std;
-using namespace TwoDimensionalArray;
+using namespace MyVectors;
 
 
 int main()
 {
-	PrintArray();
+	getMyVectors();
 	return 0;
 }
 
