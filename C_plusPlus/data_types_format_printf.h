@@ -13,5 +13,4 @@ namespace DataTypesFormat {
 	printf("the value of num 3 = %.5f \n ", num3);
 	printf("my name is %s", person);
 	};
-	
 }

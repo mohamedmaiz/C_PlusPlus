@@ -1,13 +1,13 @@
 
 #include <iostream>
-#include "data_types_format_printf.h"
+#include "two_dimensional_arrays.h"
 using namespace  std;
-using namespace DataTypesFormat;
+using namespace TwoDimensionalArray;
 
 
 int main()
 {
-	Test();
+	PrintArray();
 	return 0;
 }
 
