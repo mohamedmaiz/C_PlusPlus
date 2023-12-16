@@ -13,10 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\concepts">
+      <UniqueIdentifier>{f4bd50ec-77ca-47a6-8432-44b3391ca87f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tasks">
+      <UniqueIdentifier>{ad604db8-37f9-44f6-828b-cdd98fdf4b41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C_plusPlus.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="overloading_functions.h">
+      <Filter>Header Files\concepts</Filter>
+    </ClCompile>
+    <ClCompile Include="my_recursion.h">
+      <Filter>Header Files\concepts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

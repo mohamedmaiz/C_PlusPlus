@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="C_plusPlus.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="overloading_functions.h" />
+    <ClCompile Include="my_recursion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
