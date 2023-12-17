@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="data_types_format_printf.h" />
     <ClInclude Include="two_dimensional_arrays.h" />
+    <ClInclude Include="vectors.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

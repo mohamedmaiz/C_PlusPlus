@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\C_plusPlus"
+    "\\C_plusPlus",
+    "\\C_plusPlus\\x64"
   ],
-  "SelectedNode": "\\C_plusPlus\\overloading_functions.h",
+  "SelectedNode": "\\C_plusPlus\\vectors.h",
   "PreviewInSolutionExplorer": false
 }

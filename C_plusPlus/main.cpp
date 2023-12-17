@@ -3,14 +3,14 @@
 #include "vectors.h"
 
 using namespace  std;
-using namespace FirstTask;
+using namespace VectorOfStractureTask;
 
 
 int main()
 {
-	vector <int> vNumbers;
-	GetVectorValues(vNumbers);
-	ReadVectorValues(vNumbers);
+	vector <stEmployee> employees;
+	ReadStructure(employees);
+	PrintStructure(employees);
 	return 0;
 }
 
