@@ -8,8 +8,9 @@ using namespace FirstTask;
 
 int main()
 {
-	GetVectorValues();
-	ReadVectorValues();
+	vector <int> vNumbers;
+	GetVectorValues(vNumbers);
+	ReadVectorValues(vNumbers);
 	return 0;
 }
 

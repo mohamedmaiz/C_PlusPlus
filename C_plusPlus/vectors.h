@@ -16,9 +16,8 @@ namespace MyVectors {
 
 }
 namespace FirstTask {
-	vector <int> userNumbers;
 
-	void GetVectorValues() {
+	void GetVectorValues(vector <int> & vNumbers) {
 		int lengthOfVector;
 		cout << "Enter the Length of your Vector" << endl;
 		cin >> lengthOfVector;
@@ -27,14 +26,14 @@ namespace FirstTask {
 			cout << "Enter the value of Vector : " << i << "  " << endl;
 			int value;
 			cin >> value;
-			userNumbers.push_back(value);
+			vNumbers.push_back(value);
 
 		}
 
 	}
-	void ReadVectorValues() {
+	void ReadVectorValues(vector <int> vNumbers) {
 		int index = 1;
-		for (int element : userNumbers) {
+		for (int element : vNumbers) {
 			printf("Vector index %d = %d \n", index, element);
 			index++;
 		}
