@@ -3,12 +3,12 @@
 #include "my_pointers.h"
 
 using namespace  std;
-using namespace MyFirstPointer;
+using namespace MemoryManagementWithPointers;
 
 
 int main()
 {
-	PrintValues();
+	initVlues();
 	return 0;
 }
 
