@@ -1,16 +1,14 @@
 
 #include <iostream>
-#include "vectors.h"
+#include "my_pointers.h"
 
 using namespace  std;
-using namespace VectorOfStractureTask;
+using namespace MyFirstPointer;
 
 
 int main()
 {
-	vector <stEmployee> employees;
-	ReadStructure(employees);
-	PrintStructure(employees);
+	PrintValues();
 	return 0;
 }
 
