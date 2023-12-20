@@ -3,12 +3,13 @@
 #include "my_pointers.h"
 
 using namespace  std;
-using namespace MemoryManagementWithPointers;
+using namespace DynamicArrays;
 
 
 int main()
 {
-	initVlues();
+	ReadArray();
+	PrintArray();
 	return 0;
 }
 

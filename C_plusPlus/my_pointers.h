@@ -47,3 +47,29 @@ namespace MemoryManagementWithPointers {
 
 	
 }
+namespace DynamicArrays {
+
+	int* ptr;
+	int* ptrForArray;
+
+	void ReadArray() {
+		ptr = new int;
+		cout << "Enter the Length of array : ";
+		cin >> *ptr;
+		ptrForArray = new int[*ptr];
+		for (int i = 0; i < *ptr; i++) {
+			cout << "\nEnter the value of index " << i + 1 << " : " ;
+			cin >> *(ptrForArray+i);
+		}
+		cout << "====================================" << endl;
+	}
+	void PrintArray() {
+		for (int i = 0; i < *ptr; i++) {
+			printf("\nthe value of index %d = %d ", i + 1, *(ptrForArray + i));
+		}
+		delete ptr;
+		delete[] ptrForArray;
+	}
+	
+
+}
