@@ -86,3 +86,16 @@ namespace VectorOfStractureTask{
 		}
 	}
 }
+namespace MyVectorIterator {
+	vector<int> nums = { 22 , 4 , 65 , 97 , 3 };
+
+	// declare iterator
+	vector<int>::iterator myIter;
+
+
+	void PrintVectorItems() {
+		for (myIter = nums.begin(); myIter != nums.end(); myIter++) {
+			cout << *myIter << " ";
+		}
+	}
+}

@@ -1,15 +1,14 @@
 
 #include <iostream>
-#include "my_pointers.h"
+#include "vectors.h"
 
 using namespace  std;
-using namespace DynamicArrays;
+using namespace MyVectorIterator;
 
 
 int main()
 {
-	ReadArray();
-	PrintArray();
+	PrintVectorItems();
 	return 0;
 }
 
