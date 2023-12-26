@@ -1,14 +1,17 @@
 
 #include <iostream>
-#include "vectors.h"
-
+#include <fstream>
 using namespace  std;
-using namespace MyVectorIterator;
-
 
 int main()
 {
-	PrintVectorItems();
+	fstream MyFile;
+	MyFile.open("myFile.txt", ios::out | ios::app );
+	if (MyFile.is_open()) {
+
+		MyFile << "My Fist Line in my file using c++ \n";
+		MyFile.close();
+	}
 	return 0;
 }
 
