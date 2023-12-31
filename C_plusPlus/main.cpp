@@ -21,7 +21,7 @@ void ReadArrayEllement(vector<vector<int>> &array, int lengthOfCols, int lengthO
 	}
 
 }
-\
+
 void PrintArraysEllements(vector<vector<int>> array, int lengthOfCols, int lengthOfRows) {
 	int index = 1;
 	for (vector<int>& row : array) {
@@ -33,6 +33,18 @@ void PrintArraysEllements(vector<vector<int>> array, int lengthOfCols, int lengt
 		}
 			cout << endl;
 			index++;
+	}
+}
+void CalculateEachRowSum(vector<vector<int>> array, int lengthOfCols, int lengthOfRows) {
+	int index = 1;
+	for (vector<int>& row : array) {
+		int sum = 0;
+		for (int& value : row) {
+			sum += value;
+		}
+		cout << "Array " << index << " sum : " << sum << endl;
+		index++;
+
 	}
 }
 
@@ -48,6 +60,7 @@ int main()
 	 array.resize(arrayCols, vector<int>(arrayRows));
 	ReadArrayEllement(array, arrayCols, arrayRows);
 	PrintArraysEllements(array, arrayCols, arrayRows);
+	CalculateEachRowSum(array, arrayCols, arrayRows);
 
 	return 0;
 }
