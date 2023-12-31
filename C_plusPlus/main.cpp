@@ -13,18 +13,17 @@ int ReadNumber(string message) {
 int ReadRandomNumber(int from, int to) {
 	return from + (rand() % to);
 }
-void ReadArrayEllement(vector<vector<int>> &array, int lengthOfCols, int lengthOfRows) {
+void ReadMatrixVectorEllement(vector<vector<int>> &vec, int lengthOfCols, int lengthOfRows) {
 	for (int cols = 0; cols < lengthOfCols; cols++) {
 		for (int row = 0; row < lengthOfRows; row++) {
-			array[cols][row] = ReadRandomNumber(0, 100);
+			vec[cols][row] = ReadRandomNumber(0, 100);
 		}
 	}
 
 }
-
-void PrintArraysEllements(vector<vector<int>> array, int lengthOfCols, int lengthOfRows) {
+void PrintMatrixVectorEllements(vector<vector<int>> vec) {
 	int index = 1;
-	for (vector<int>& row : array) {
+	for (vector<int>& row : vec) {
 		cout << "Array " << index << " : ";
 
 		for (int& value : row) {
@@ -35,18 +34,26 @@ void PrintArraysEllements(vector<vector<int>> array, int lengthOfCols, int lengt
 			index++;
 	}
 }
-void CalculateEachRowSum(vector<vector<int>> array, int lengthOfCols, int lengthOfRows) {
-	int index = 1;
-	for (vector<int>& row : array) {
-		int sum = 0;
-		for (int& value : row) {
-			sum += value;
-		}
-		cout << "Array " << index << " sum : " << sum << endl;
-		index++;
-
+int RowSum(vector<int> row) {
+	int sum = 0;
+	for (int& value : row) {
+		sum += value;
+	}
+	return sum;
+}
+void SumRowsInVector(vector<vector<int>> vec , vector<int> &vecOfSums) {
+	for (vector<int>& row : vec) {
+		vecOfSums.push_back(RowSum(row));
 	}
 }
+
+void PrintVector(vector<int> vec) {
+	for (int& value : vec) {
+		cout << "Row 1 Sum = " << value << endl;
+	}
+
+}
+
 
 
 
@@ -56,12 +63,14 @@ int main()
 	srand((unsigned)time(NULL));
 	 int arrayCols = ReadNumber("Enter the number of array cols");
 	 int arrayRows = ReadNumber("Enter the number of array rows");
-	 vector<vector<int>> array ;
-	 array.resize(arrayCols, vector<int>(arrayRows));
-	ReadArrayEllement(array, arrayCols, arrayRows);
-	PrintArraysEllements(array, arrayCols, arrayRows);
-	CalculateEachRowSum(array, arrayCols, arrayRows);
-
+	 vector<vector<int>> vec ;
+	 vector<int> sumOfEachRow;
+	 vec.resize(arrayCols, vector<int>(arrayRows));
+	ReadMatrixVectorEllement(vec, arrayCols, arrayRows);
+	PrintMatrixVectorEllements(vec);
+	PrintVector(sumOfEachRow);
+	SumRowsInVector(vec, sumOfEachRow);
+	PrintVector(sumOfEachRow);
 	return 0;
 }
 
