@@ -13,7 +13,7 @@ int ReadNumber(string message) {
 int ReadRandomNumber(int from, int to) {
 	return from + (rand() % to);
 }
-void ReadMatrixVectorEllement(vector<vector<int>> &vec, int lengthOfCols, int lengthOfRows) {
+void ReadMatrixVector(vector<vector<int>> &vec, int lengthOfCols, int lengthOfRows) {
 	for (int cols = 0; cols < lengthOfCols; cols++) {
 		for (int row = 0; row < lengthOfRows; row++) {
 			vec[cols][row] = ReadRandomNumber(0, 100);
@@ -21,13 +21,11 @@ void ReadMatrixVectorEllement(vector<vector<int>> &vec, int lengthOfCols, int le
 	}
 
 }
-void PrintMatrixVectorEllements(vector<vector<int>> vec) {
+void PrintMatrixVector(vector<vector<int>> vec) {
 	int index = 1;
 	for (vector<int>& row : vec) {
-		cout << "Array " << index << " : ";
-
 		for (int& value : row) {
-			cout << setw(3) << value << " ";
+			cout << setw(3) << value ;
 
 		}
 			cout << endl;
@@ -66,6 +64,23 @@ void SumColsInVector(vector<vector<int>> vec, vector<int>& vecOfSums  , int leng
 		vecOfSums.push_back(colSum(vec, row, lengthOfCols));
 		}
 }
+void ReadOrdredVectorEllement(vector<vector<int>>& vec, int lengthOfCols, int lengthOfRows) {
+	int number = 0;
+	for (int cols = 0; cols < lengthOfCols; cols++) {
+		for (int row = 0; row < lengthOfRows; row++) {
+			number++;
+			vec[cols][row] = number;
+		}
+	}
+
+}
+void PrintTransposeMtrixVector(vector<vector<int>>& vec, vector<vector<int>>& transposedVec , int lengthOfCols, int lengthOfRows) {
+	for (int row = 0; row < lengthOfRows; row++) {
+		for (int col = 0; col < lengthOfCols; col++) {
+			transposedVec[row][col] = vec[col][row] ;
+		}
+	}
+}
 
 
 
@@ -78,17 +93,17 @@ int main()
 	int arrayCols = ReadNumber("Enter the number of array cols");
 	int arrayRows = ReadNumber("Enter the number of array rows");
 	vector<vector<int>> vec ;
-	vector<int> sumOfEachRow;
-	vector<int> sumOfEachcol;
+	vector<vector<int>> transposedVec;
 	vec.resize(arrayCols, vector<int>(arrayRows));
-	ReadMatrixVectorEllement(vec, arrayCols, arrayRows);
-	PrintMatrixVectorEllements(vec);
-	SumRowsInVector(vec, sumOfEachRow);
-	SumColsInVector(vec, sumOfEachcol , arrayCols , arrayRows);
-	cout << "\nsum of rows" << endl;
-	PrintVector(sumOfEachRow , "Row ");
-	cout << "\nsum of cols" << endl;
-	PrintVector(sumOfEachcol , "Col ");
+	transposedVec.resize(arrayRows, vector<int>(arrayCols));
+
+	ReadOrdredVectorEllement(vec, arrayCols, arrayRows);
+	PrintMatrixVector(vec);
+	cout << "\n=======================\n" << endl;
+	PrintTransposeMtrixVector(vec, transposedVec , arrayCols, arrayRows);
+
+	PrintMatrixVector(transposedVec);
+
 
 	return 0;
 }
