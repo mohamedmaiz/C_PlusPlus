@@ -2,71 +2,117 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <cmath>
+
 using namespace  std;
 
-int ReadNumber(string message) {
-	int number;
+short ReadNumber(string message) {
+	short number;
 	cout << message << endl;
 	cin >> number;
 	return number;
 }
-int ReadRandomNumber(int from, int to) {
+short ReadRandomNumber(short from, short to) {
 	return from + (rand() % to);
 }
-void ReadMatrixVectorEllement(vector<vector<int>> &vec, int lengthOfCols, int lengthOfRows) {
-	for (int cols = 0; cols < lengthOfCols; cols++) {
-		for (int row = 0; row < lengthOfRows; row++) {
-			vec[cols][row] = ReadRandomNumber(0, 100);
+void ReadMatrixVector(vector<vector<short>> &vec, short lengthOfCols, short lengthOfRows) {
+	for (short cols = 0; cols < lengthOfCols; cols++) {
+		for (short row = 0; row < lengthOfRows; row++) {
+			vec[cols][row] = ReadRandomNumber(0, 20);
 		}
 	}
 
 }
-void PrintMatrixVectorEllements(vector<vector<int>> vec) {
-	int index = 1;
-	for (vector<int>& row : vec) {
-		cout << "Array " << index << " : ";
-
-		for (int& value : row) {
-			cout << setw(3) << value << " ";
-
+void PrintMatrixVector(vector<vector<short>> vec) {
+	short index = 1;
+	for (vector<short>& row : vec) {
+		for (short& value : row) {
+			value < 10 ? cout << setw(5) << "0" << value : cout << setw(6) << value;
 		}
 			cout << endl;
 			index++;
 	}
 }
-int RowSum(vector<int> row) {
-	int sum = 0;
-	for (int& value : row) {
+short RowSum(vector<short> row) {
+	short sum = 0;
+	for (short& value : row) {
 		sum += value;
 	}
 	return sum;
 }
-int colSum(vector<vector<int>> vec, int colNumber , int length) {
-	int sum = 0;
-	for (int i = 0; i < length; i++) {
+short colSum(vector<vector<short>> vec, short colNumber , short length) {
+	short sum = 0;
+	for (short i = 0; i < length; i++) {
 		sum += vec[i][colNumber];
 	}
 	return sum;
 }
-void SumRowsInVector(vector<vector<int>> vec , vector<int> &vecOfSums) {
-	for (vector<int>& row : vec) {
+void SumRowsInVector(vector<vector<short>> vec , vector<short> &vecOfSums) {
+	for (vector<short>& row : vec) {
 		vecOfSums.push_back(RowSum(row));
 	}
 }
-void PrintVector(vector<int> vec , string type) {
-	int index = 1;
-	for (int& value : vec) {
-		cout << type << index << " Sum = " << value << endl;
-		index++;
+void PrintVector(vector<short> vec ) {
+	for (short& value : vec) {
+		cout << setw(4) << value ;
 	}
+	cout << endl;
 
 }
-void SumColsInVector(vector<vector<int>> vec, vector<int>& vecOfSums  , int lengthOfCols, int lengthOfRows) {
-	for (int row = 0; row < lengthOfRows; row++) {
+void SumColsInVector(vector<vector<short>> vec, vector<short>& vecOfSums  , short lengthOfCols, short lengthOfRows) {
+	for (short row = 0; row < lengthOfRows; row++) {
 		vecOfSums.push_back(colSum(vec, row, lengthOfCols));
 		}
 }
+void ReadOrdredVectorEllement(vector<vector<int>>& vec, short lengthOfCols, short lengthOfRows) {
+	short number = 0;
+	for (short cols = 0; cols < lengthOfCols; cols++) {
+		for (short row = 0; row < lengthOfRows; row++) {
+			number++;
+			vec[cols][row] = number;
+		}
+	}
 
+}
+void PrintTransposeMtrixVector(vector<vector<int>>& vec, vector<vector<int>>& transposedVec , short lengthOfCols, short lengthOfRows) {
+	for (short row = 0; row < lengthOfRows; row++) {
+		for (short col = 0; col < lengthOfCols; col++) {
+			transposedVec[row][col] = vec[col][row] ;
+		}
+	}
+}
+
+void MusltiplyTwoMatrixVector(vector<vector<short>>& vector1, vector<vector<short>>& vector2, vector<vector<short>>& mulitplyVec, short lengthOfCols, short lengthOfRows) {
+	for (short col = 0; col < lengthOfCols; col++) {
+		for (short row = 0; row < lengthOfRows; row++) {
+			mulitplyVec[col][row] = vector1[col][row] * vector2[col][row];
+		}
+	}
+}
+vector<short> GetMiddleCol(vector<vector<short>>& vec ,short rowLength) {
+	short middle = floor(rowLength / 2);
+	vector<short> middleCol;
+	for (vector<short>& row : vec) {
+		middleCol.push_back(row[middle]);
+	}
+	return middleCol;
+}
+vector<short> GetMiddleRow(vector<vector<short>>& vec , short colLength) {
+	short middle = floor(colLength / 2);
+	return vec[middle];
+}
+void MidlleRowAndcolOfMatrix(vector<vector<short>>& vec, vector<short>& middleCol, vector<short>& middleRow, short colLength, short rowLength) {
+	if (colLength % 2 == 0) {
+		cout << "The vector cols is odd" << endl;
+	}
+	else if (rowLength % 2 == 0) {
+		cout << "The vector Rows is odd" << endl;
+	}
+	else {
+		middleCol = GetMiddleCol(vec , rowLength);
+		middleRow = GetMiddleRow(vec , colLength);
+	}
+}
 
 
 
@@ -75,20 +121,28 @@ void SumColsInVector(vector<vector<int>> vec, vector<int>& vecOfSums  , int leng
 int main()
 {
 	srand((unsigned)time(NULL));
-	int arrayCols = ReadNumber("Enter the number of array cols");
-	int arrayRows = ReadNumber("Enter the number of array rows");
-	vector<vector<int>> vec ;
-	vector<int> sumOfEachRow;
-	vector<int> sumOfEachcol;
-	vec.resize(arrayCols, vector<int>(arrayRows));
-	ReadMatrixVectorEllement(vec, arrayCols, arrayRows);
-	PrintMatrixVectorEllements(vec);
-	SumRowsInVector(vec, sumOfEachRow);
-	SumColsInVector(vec, sumOfEachcol , arrayCols , arrayRows);
-	cout << "\nsum of rows" << endl;
-	PrintVector(sumOfEachRow , "Row ");
-	cout << "\nsum of cols" << endl;
-	PrintVector(sumOfEachcol , "Col ");
+	short arrayCols = ReadNumber("Enter the number of array cols");
+	short arrayRows = ReadNumber("Enter the number of array rows");
+	vector<vector<short>> vec1 ;
+	vector<short> middleCol;
+	vector<short> middleRow;
+
+	vec1.resize(arrayCols, vector<short>(arrayRows));
+
+	ReadMatrixVector(vec1, arrayCols, arrayRows);
+	PrintMatrixVector(vec1);
+	cout << "\n=======================\n" << endl;
+
+	
+	MidlleRowAndcolOfMatrix(vec1, middleCol, middleRow, arrayCols, arrayRows);
+	cout << "\nmoddle Col :\n" << endl;
+	PrintVector(middleCol);
+	cout << "\nmoddle Row :\n" << endl;
+	PrintVector(middleRow);
+
+
+
+
 
 	return 0;
 }
