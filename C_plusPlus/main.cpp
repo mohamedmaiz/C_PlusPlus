@@ -13,7 +13,7 @@ short ReadNumber(string message) {
 	return number;
 }
 short ReadRandomNumber(short from, short to) {
-	return from + (rand() % to);
+	return 0 + (rand() % 2);
 }
 void ReadMatrixVector(vector<vector<short>> &vec, short lengthOfCols, short lengthOfRows) {
 	for (short cols = 0; cols < lengthOfCols; cols++) {
@@ -121,10 +121,32 @@ short MatrixSum(vector<vector<short>> vec) {
 	}
 	return sum;
 }
-bool CompareTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2) {
-	return MatrixSum(vec1) == MatrixSum(vec2) ? true : false;
+bool CompareSumOfTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2) {
+	return  MatrixSum(vec1) == MatrixSum(vec2) ;
 }
-
+bool CompareTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2, short colLength, short rowLength) {
+	for (short col = 0; col < colLength; col++) {
+		for (short row = 0; row < rowLength; row++) {
+			if (vec1[col][row] != vec2[col][row]) {
+				return false;
+			} 
+		}
+	}
+	return true;
+}
+bool IsMatrixIdentity(vector<vector<short>> vec , short colLength , short rowLength) {
+	for (short col = 0; col < colLength; col++) {
+		for (short row = 0; row < rowLength; row++) {
+			if (col == row && vec[col][row] != 1) {
+					return false;
+			}
+			else if(vec[col][row] != 0) {
+					return false;
+			}
+		}
+	}
+	return true;
+}
 
 
 
@@ -134,21 +156,21 @@ int main()
 	short arrayCols = ReadNumber("Enter the number of array cols");
 	short arrayRows = ReadNumber("Enter the number of array rows");
 	vector<vector<short>> vec1 ;
-	vector<vector<short>> vec2;
 
 	vec1.resize(arrayCols, vector<short>(arrayRows));
-	vec2.resize(arrayCols, vector<short>(arrayRows));
 
+	vector<vector<short>> vec2 = {
+		{1,1,0},
+		{0,1,0},
+		{0,0,1}
 
-	ReadMatrixVector(vec1, arrayCols, arrayRows);
-	PrintMatrixVector(vec1);
-	cout << "\n=======================\n" << endl;
-
-	ReadMatrixVector(vec2, arrayCols, arrayRows);
+	};
 	PrintMatrixVector(vec2);
 	cout << "\n=======================\n" << endl;
 
-	CompareTwoMatrices(vec1, vec2) ? cout << "matries are equale" << endl : cout << "matries are not equale" << endl;
+
+
+	IsMatrixIdentity(vec2, arrayCols , arrayRows) ? cout << "matrix are identity" << endl : cout << "matrix are not identity" << endl;
 
 
 
