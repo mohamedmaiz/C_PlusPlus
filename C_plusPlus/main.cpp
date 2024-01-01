@@ -81,7 +81,6 @@ void PrintTransposeMtrixVector(vector<vector<int>>& vec, vector<vector<int>>& tr
 		}
 	}
 }
-
 void MusltiplyTwoMatrixVector(vector<vector<short>>& vector1, vector<vector<short>>& vector2, vector<vector<short>>& mulitplyVec, short lengthOfCols, short lengthOfRows) {
 	for (short col = 0; col < lengthOfCols; col++) {
 		for (short row = 0; row < lengthOfRows; row++) {
@@ -113,7 +112,18 @@ void MidlleRowAndcolOfMatrix(vector<vector<short>>& vec, vector<short>& middleCo
 		middleRow = GetMiddleRow(vec , colLength);
 	}
 }
-
+short MatrixSum(vector<vector<short>> vec) {
+	short sum = 0;
+	for (vector<short>& row : vec) {
+		for (short val : row) {
+			sum += val;
+		}
+	}
+	return sum;
+}
+bool CompareTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2) {
+	return MatrixSum(vec1) == MatrixSum(vec2) ? true : false;
+}
 
 
 
@@ -124,22 +134,21 @@ int main()
 	short arrayCols = ReadNumber("Enter the number of array cols");
 	short arrayRows = ReadNumber("Enter the number of array rows");
 	vector<vector<short>> vec1 ;
-	vector<short> middleCol;
-	vector<short> middleRow;
+	vector<vector<short>> vec2;
 
 	vec1.resize(arrayCols, vector<short>(arrayRows));
+	vec2.resize(arrayCols, vector<short>(arrayRows));
+
 
 	ReadMatrixVector(vec1, arrayCols, arrayRows);
 	PrintMatrixVector(vec1);
 	cout << "\n=======================\n" << endl;
 
-	
-	MidlleRowAndcolOfMatrix(vec1, middleCol, middleRow, arrayCols, arrayRows);
-	cout << "\nmoddle Col :\n" << endl;
-	PrintVector(middleCol);
-	cout << "\nmoddle Row :\n" << endl;
-	PrintVector(middleRow);
+	ReadMatrixVector(vec2, arrayCols, arrayRows);
+	PrintMatrixVector(vec2);
+	cout << "\n=======================\n" << endl;
 
+	CompareTwoMatrices(vec1, vec2) ? cout << "matries are equale" << endl : cout << "matries are not equale" << endl;
 
 
 
