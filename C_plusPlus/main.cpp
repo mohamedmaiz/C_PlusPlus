@@ -134,7 +134,7 @@ bool CompareTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2
 	}
 	return true;
 }
-bool IsMatrixIdentity(vector<vector<short>> vec , short colLength , short rowLength) {
+bool IsIdentityMatrix(vector<vector<short>> vec , short colLength , short rowLength) {
 	for (short col = 0; col < colLength; col++) {
 		for (short row = 0; row < rowLength; row++) {
 			if (col == row && vec[col][row] != vec[0][0]) {
@@ -147,7 +147,16 @@ bool IsMatrixIdentity(vector<vector<short>> vec , short colLength , short rowLen
 	}
 	return true;
 }
-
+bool IsSparceMatrix(vector<vector<short>> vec) {
+	short counterZero = 0;
+	short counterNumbers = 0;
+	for (vector<short>& row : vec) {
+		for (short& val : row) {
+			val == 0 ? counterZero++ : counterNumbers++;
+		}
+	}
+	return counterZero > counterNumbers;
+}
 
 
 int main()
@@ -161,8 +170,8 @@ int main()
 
 	vector<vector<short>> vec2 = {
 		{6,0,0},
-		{0,6,0},
-		{0,0,5}
+		{7,6,0},
+		{0,8,5}
 
 	};
 	PrintMatrixVector(vec2);
@@ -170,7 +179,7 @@ int main()
 
 
 
-	IsMatrixIdentity(vec2, 3 , 3) ? cout << "matrix are identity" << endl : cout << "matrix are not identity" << endl;
+	IsSparceMatrix(vec2) ? cout << "matrix is Sparce" << endl : cout << "matrix is not Sparce" << endl;
 
 
 
