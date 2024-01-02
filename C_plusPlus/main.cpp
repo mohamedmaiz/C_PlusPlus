@@ -173,6 +173,37 @@ void PrintIntersectedNumbersInTwoVectors(vector<vector<short>> vec1, vector<vect
 	}
 	cout << endl;
 }
+void MinimumNumberInVector(vector<vector<short>> vec) {
+	short minimum = vec[0][0];
+	for (vector<short>& row : vec) {
+		for (short& val : row) {
+			if (val < minimum) minimum = val;
+		}
+	}
+	cout << "Minimum number is : " << minimum << endl;
+
+
+}
+void MaximumNumberInVector(vector<vector<short>> vec) {
+	short maximum = vec[0][0];
+	for (vector<short>& row : vec) {
+		for (short& val : row) {
+			if (val > maximum) maximum = val;
+
+		}
+	}
+	cout << "Maximum number is : " << maximum << endl;
+
+
+}
+bool IsPalindromeMatrrix(vector<vector<short>> vec, short colLength,short rowLength) {
+	for (short col = 0; col < colLength; col++) {
+		for (short row = 0; row < rowLength; row++) {
+			if (vec[col][row] != vec[col][(rowLength - 1) - row]) return false;
+		}
+	}
+	return true;
+}
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -183,25 +214,15 @@ int main()
 	//vec1.resize(arrayCols, vector<short>(arrayRows));
 
 	vector<vector<short>> vec2 = {
-		{6,0,0},
-		{7,6,0},
-		{0,8,5}
+		{4,11,4},
+		{2,6,2},
+		{4,8,5}
 
 	};
-	vector<vector<short>> vec3 = {
-		{6,11,4},
-		{7,6,2},
-		{3,8,5}
 
-	};
 	PrintMatrixVector(vec2);
 	cout << "\n=======================\n" << endl;
-	PrintMatrixVector(vec3);
-	cout << "\n=======================\n" << endl;
-
-
-
-	PrintIntersectedNumbersInTwoVectors(vec2 ,  vec3);
+	IsPalindromeMatrrix(vec2, 3, 3) ? cout <<  "is palindrome matrix" << endl  : cout << "is not palindrome matrix"  << endl ;
 
 
 
