@@ -157,7 +157,14 @@ bool IsSparceMatrix(vector<vector<short>> vec) {
 	}
 	return counterZero > counterNumbers;
 }
-
+bool CheckIfNumberExist(vector<vector<short>> vec , short number){
+	for (vector<short>& row : vec) {
+		for (short& val : row) {
+			if (val == number) return true;
+		}
+	}
+	return false;
+}
 
 int main()
 {
@@ -179,7 +186,7 @@ int main()
 
 
 
-	IsSparceMatrix(vec2) ? cout << "matrix is Sparce" << endl : cout << "matrix is not Sparce" << endl;
+	CheckIfNumberExist(vec2 , 9) ? cout << "Yes it is there" << endl : cout << "matrix dont have this number" << endl;
 
 
 
