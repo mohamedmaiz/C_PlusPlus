@@ -13,7 +13,7 @@ short ReadNumber(string message) {
 	return number;
 }
 short ReadRandomNumber(short from, short to) {
-	return from + (rand() % to);
+	return 0 + (rand() % 2);
 }
 void ReadMatrixVector(vector<vector<short>> &vec, short lengthOfCols, short lengthOfRows) {
 	for (short cols = 0; cols < lengthOfCols; cols++) {
@@ -81,7 +81,6 @@ void PrintTransposeMtrixVector(vector<vector<int>>& vec, vector<vector<int>>& tr
 		}
 	}
 }
-
 void MusltiplyTwoMatrixVector(vector<vector<short>>& vector1, vector<vector<short>>& vector2, vector<vector<short>>& mulitplyVec, short lengthOfCols, short lengthOfRows) {
 	for (short col = 0; col < lengthOfCols; col++) {
 		for (short row = 0; row < lengthOfRows; row++) {
@@ -113,33 +112,96 @@ void MidlleRowAndcolOfMatrix(vector<vector<short>>& vec, vector<short>& middleCo
 		middleRow = GetMiddleRow(vec , colLength);
 	}
 }
-
-
-
-
-
+short MatrixSum(vector<vector<short>> vec) {
+	short sum = 0;
+	for (vector<short>& row : vec) {
+		for (short val : row) {
+			sum += val;
+		}
+	}
+	return sum;
+}
+bool CompareSumOfTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2) {
+	return  MatrixSum(vec1) == MatrixSum(vec2) ;
+}
+bool CompareTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2, short colLength, short rowLength) {
+	for (short col = 0; col < colLength; col++) {
+		for (short row = 0; row < rowLength; row++) {
+			if (vec1[col][row] != vec2[col][row]) {
+				return false;
+			} 
+		}
+	}
+	return true;
+}
+bool IsIdentityMatrix(vector<vector<short>> vec , short colLength , short rowLength) {
+	for (short col = 0; col < colLength; col++) {
+		for (short row = 0; row < rowLength; row++) {
+			if (col == row && vec[col][row] != vec[0][0]) {
+					return false;
+			}
+			else if(col != row && vec[col][row] != 0) {
+					return false;
+			}
+		}
+	}
+	return true;
+}
+bool IsSparceMatrix(vector<vector<short>> vec) {
+	short counterZero = 0;
+	short counterNumbers = 0;
+	for (vector<short>& row : vec) {
+		for (short& val : row) {
+			val == 0 ? counterZero++ : counterNumbers++;
+		}
+	}
+	return counterZero > counterNumbers;
+}
+bool CheckIfNumberExist(vector<vector<short>> vec , short number){
+	for (vector<short>& row : vec) {
+		for (short& val : row) {
+			if (val == number) return true;
+		}
+	}
+	return false;
+}
+void PrintIntersectedNumbersInTwoVectors(vector<vector<short>> vec1, vector<vector<short>> vec2) {
+	for (vector<short>& row : vec1) {
+		for (short& val : row) {
+			if (CheckIfNumberExist(vec2 , val)) cout << val << "   ";
+		}
+	}
+	cout << endl;
+}
 int main()
 {
 	srand((unsigned)time(NULL));
-	short arrayCols = ReadNumber("Enter the number of array cols");
-	short arrayRows = ReadNumber("Enter the number of array rows");
-	vector<vector<short>> vec1 ;
-	vector<short> middleCol;
-	vector<short> middleRow;
+	//short arrayCols = ReadNumber("Enter the number of array cols");
+	//short arrayRows = ReadNumber("Enter the number of array rows");
+	//vector<vector<short>> vec1 ;
 
-	vec1.resize(arrayCols, vector<short>(arrayRows));
+	//vec1.resize(arrayCols, vector<short>(arrayRows));
 
-	ReadMatrixVector(vec1, arrayCols, arrayRows);
-	PrintMatrixVector(vec1);
+	vector<vector<short>> vec2 = {
+		{6,0,0},
+		{7,6,0},
+		{0,8,5}
+
+	};
+	vector<vector<short>> vec3 = {
+		{6,11,4},
+		{7,6,2},
+		{3,8,5}
+
+	};
+	PrintMatrixVector(vec2);
+	cout << "\n=======================\n" << endl;
+	PrintMatrixVector(vec3);
 	cout << "\n=======================\n" << endl;
 
-	
-	MidlleRowAndcolOfMatrix(vec1, middleCol, middleRow, arrayCols, arrayRows);
-	cout << "\nmoddle Col :\n" << endl;
-	PrintVector(middleCol);
-	cout << "\nmoddle Row :\n" << endl;
-	PrintVector(middleRow);
 
+
+	PrintIntersectedNumbersInTwoVectors(vec2 ,  vec3);
 
 
 
