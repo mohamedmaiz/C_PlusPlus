@@ -165,7 +165,14 @@ bool CheckIfNumberExist(vector<vector<short>> vec , short number){
 	}
 	return false;
 }
-
+void PrintIntersectedNumbersInTwoVectors(vector<vector<short>> vec1, vector<vector<short>> vec2) {
+	for (vector<short>& row : vec1) {
+		for (short& val : row) {
+			if (CheckIfNumberExist(vec2 , val)) cout << val << "   ";
+		}
+	}
+	cout << endl;
+}
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -181,12 +188,20 @@ int main()
 		{0,8,5}
 
 	};
+	vector<vector<short>> vec3 = {
+		{6,11,4},
+		{7,6,2},
+		{3,8,5}
+
+	};
 	PrintMatrixVector(vec2);
+	cout << "\n=======================\n" << endl;
+	PrintMatrixVector(vec3);
 	cout << "\n=======================\n" << endl;
 
 
 
-	CheckIfNumberExist(vec2 , 9) ? cout << "Yes it is there" << endl : cout << "matrix dont have this number" << endl;
+	PrintIntersectedNumbersInTwoVectors(vec2 ,  vec3);
 
 
 
