@@ -137,10 +137,10 @@ bool CompareTwoMatrices(vector<vector<short>>& vec1, vector<vector<short>>& vec2
 bool IsMatrixIdentity(vector<vector<short>> vec , short colLength , short rowLength) {
 	for (short col = 0; col < colLength; col++) {
 		for (short row = 0; row < rowLength; row++) {
-			if (col == row && vec[col][row] != 1) {
+			if (col == row && vec[col][row] != vec[0][0]) {
 					return false;
 			}
-			else if(vec[col][row] != 0) {
+			else if(col != row && vec[col][row] != 0) {
 					return false;
 			}
 		}
@@ -153,16 +153,16 @@ bool IsMatrixIdentity(vector<vector<short>> vec , short colLength , short rowLen
 int main()
 {
 	srand((unsigned)time(NULL));
-	short arrayCols = ReadNumber("Enter the number of array cols");
-	short arrayRows = ReadNumber("Enter the number of array rows");
-	vector<vector<short>> vec1 ;
+	//short arrayCols = ReadNumber("Enter the number of array cols");
+	//short arrayRows = ReadNumber("Enter the number of array rows");
+	//vector<vector<short>> vec1 ;
 
-	vec1.resize(arrayCols, vector<short>(arrayRows));
+	//vec1.resize(arrayCols, vector<short>(arrayRows));
 
 	vector<vector<short>> vec2 = {
-		{1,1,0},
-		{0,1,0},
-		{0,0,1}
+		{6,0,0},
+		{0,6,0},
+		{0,0,5}
 
 	};
 	PrintMatrixVector(vec2);
@@ -170,7 +170,7 @@ int main()
 
 
 
-	IsMatrixIdentity(vec2, arrayCols , arrayRows) ? cout << "matrix are identity" << endl : cout << "matrix are not identity" << endl;
+	IsMatrixIdentity(vec2, 3 , 3) ? cout << "matrix are identity" << endl : cout << "matrix are not identity" << endl;
 
 
 
